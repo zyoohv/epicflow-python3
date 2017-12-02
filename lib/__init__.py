@@ -23,7 +23,7 @@ def transtoflo(thread_name):
         lock.release()
         trans_cmd += 'get_epicflow(\'{}\', \'{}\', \'{}.flo\'); '.format(img1_path, img2_path, out_path[:-4])
     trans_cmd += 'exit;\"'
-    print('trans_cmd=', trans_cmd)
+    # print('trans_cmd=', trans_cmd)
     os.system(trans_cmd)
 
 
@@ -69,8 +69,7 @@ def get_epicflow(**args):
     for thread in transtoflo_list:
         thread.join()
 
-    print('hahahahaha!!!!!!!!!!!!!!!!!!')
-    time.sleep(5)
+    print('################## flo->png ##################')
 
     task_idx = 0
     transtopng_list = []
