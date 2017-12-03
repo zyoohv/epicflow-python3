@@ -33,3 +33,5 @@ $ python3 example.py
 ## 3. Interface
 
 more information reference file 'example.py' please.
+
+And in `abstract_epic.py` file, we show how to abstract the feature in `i-LIDS-VID` dataset.

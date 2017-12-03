@@ -12,7 +12,6 @@ lib_path = ""
 
 def transtoflo(thread_name):
     global task_idx
-    trans_cmd = 'cd {}; matlab -nodisplay -r \"'.format(lib_path)
     while True:
         lock.acquire()
         print('trans_flo: [{}/{}]'.format(task_idx, task_tot))
@@ -22,10 +21,9 @@ def transtoflo(thread_name):
         img1_path, img2_path, out_path = task_list[task_idx]
         task_idx += 1
         lock.release()
-        trans_cmd += 'get_epicflow(\'{}\', \'{}\', \'{}.flo\'); '.format(img1_path, img2_path, out_path[:-4])
-    trans_cmd += 'exit;\"'
-    # print('trans_cmd=', trans_cmd)
-    os.system(trans_cmd)
+        trans_cmd = 'cd {}; matlab -nodisplay -r \"get_epicflow(\'{}\', \'{}\', \'{}.flo\'); exit;\"'.\
+            format(lib_path, img1_path, img2_path, out_path[:-4])
+        os.system(trans_cmd)
 
 
 def transtopng(thread_name):
