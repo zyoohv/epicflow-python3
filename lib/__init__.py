@@ -15,6 +15,7 @@ def transtoflo(thread_name):
     trans_cmd = 'cd {}; matlab -nodisplay -r \"'.format(lib_path)
     while True:
         lock.acquire()
+        print('trans_flo: [{}/{}]'.format(task_idx, task_tot))
         if task_idx >= task_tot:
             lock.release()
             break
@@ -31,6 +32,7 @@ def transtopng(thread_name):
     global task_idx
     while True:
         lock.acquire()
+        print('trans_png: [{}/{}]'.format(task_idx, task_tot))
         if task_idx >= task_tot:
             lock.release()
             break
@@ -64,7 +66,7 @@ def get_epicflow(**args):
     task_idx = 0
     transtoflo_list = []
     for thread_name in range(thread_num):
-        transtoflo_list.append(threading.Thread(target=transtoflo, args=(thread_name,)))
+        transtoflo_list.append(threading.Thread(target=transtoflo, args=(str(thread_name),)))
         transtoflo_list[-1].start()
     for thread in transtoflo_list:
         thread.join()
@@ -74,7 +76,7 @@ def get_epicflow(**args):
     task_idx = 0
     transtopng_list = []
     for thread_name in range(thread_num):
-        transtopng_list.append(threading.Thread(target=transtopng, args=(thread_name,)))
+        transtopng_list.append(threading.Thread(target=transtopng, args=(str(thread_name),)))
         transtopng_list[-1].start()
     for thread in transtopng_list:
         thread.join()
