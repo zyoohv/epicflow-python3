@@ -2,7 +2,6 @@
 
 Abstract Epicflow with python2/3
 
-
 ## 1. Compile
 
 *   compile SED_edge
@@ -30,7 +29,6 @@ $ make
 ```
 $ python3 example.py
 ```
-
 
 ## 3. Interface
 

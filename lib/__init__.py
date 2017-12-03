@@ -48,7 +48,7 @@ def get_epicflow(**args):
     '''
     task_list=[]
     thread_num = 5
-    lib_path = ./lib
+    lib_path = './lib'
     '''
     global task_list
     global task_tot
