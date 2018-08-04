@@ -1,9 +1,14 @@
 import os
+import argparse
 from lib import get_epicflow
 
+parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('--rgb_root', type=str, default='/home/yonghui/Documents/i-LIDS-VID/sequences')
+parser.add_argument('--flow_root', type=str, default='/home/yonghui/Documents/i-LIDS-VID-EpicFlow/sequences')
+args = parser.parse_args()
 
-rgb_root = '/home/yonghui/Documents/i-LIDS-VID/sequences'
-flow_root = '/home/yonghui/Documents/i-LIDS-VID-EpicFlow/sequences'
+rgb_root = args.rgb_root
+flow_root = args.flow_root
 
 task_list = []
 
